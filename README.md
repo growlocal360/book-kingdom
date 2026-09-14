@@ -20,9 +20,14 @@ Examples:
 
 ## Tracking
 
-- GTM container `GTM-MKZ8K9C3` (same as main site)
-- `dataLayer` events: `call_click` (any tel link) and `lead_form_submit` (form success), both carry `appliance` and `brand` — map these to Google Ads conversions in GTM
+- **Google Ads conversions fire directly via gtag.js** (no GTM dependency): Conversion ID `AW-350505923`, labels in `window.KAR_CONFIG` (`LABEL_CALL` = tel-link clicks → "LP - Phone Call Click" action, `LABEL_FORM` = form success → "LP - Form Submit" action)
+- GTM container `GTM-MKZ8K9C3` (same as main site) also loads for GA4/other tags published there
+- `dataLayer` events: `call_click` and `lead_form_submit`, both carry `appliance` and `brand`
 - Page is `noindex` (meta + `X-Robots-Tag` header via `vercel.json`)
+
+## Phone number swap (GoHighLevel)
+
+Edit `window.KAR_CONFIG` at the top of `index.html` — change `PHONE_DISPLAY` and `PHONE_TEL`, push, done. Every call CTA (topbar, hero, mobile sticky bar, footer, form-success link) populates from those two values.
 
 ## Lead form
 

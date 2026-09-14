@@ -9,7 +9,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-<!-- Google Tag Manager -->
+<!-- Site config: swap PHONE values for the GoHighLevel tracking number when ready -->
+<script>
+window.KAR_CONFIG = {
+  PHONE_DISPLAY: '(941) 347-9390',   // TODO: replace with GoHighLevel tracking number
+  PHONE_TEL: '+19413479390',         // TODO: replace with GoHighLevel tracking number
+  ADS_ID: 'AW-350505923',
+  LABEL_CALL: 'x6hKCMeag_gcEMOXkacB',
+  LABEL_FORM: 'Y1dTCMSag_gcEMOXkacB'
+};
+</script>
+<!-- Google tag (gtag.js) — Google Ads conversion tracking -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-350505923"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-350505923');
+</script>
+<!-- Google Tag Manager (same container as main site) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -136,7 +154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/"><img src="/assets/logo.svg" alt="Kingdom Appliance Repair"></a>
     <a class="call-btn js-call" href="tel:+19413479390">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>
-      <span class="long">Call:&nbsp;</span><span>(941) 347-9390</span>
+      <span class="long">Call:&nbsp;</span><span class="js-phone-text">(941) 347-9390</span>
     </a>
   </div>
 </div>
@@ -155,7 +173,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="cta-row">
         <a class="cta-primary js-call" href="tel:+19413479390">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>
-          Call (941) 347-9390
+          Call <span class="js-phone-text">(941) 347-9390</span>
         </a>
         <a class="cta-secondary" href="#book">Book Online ↓</a>
       </div>
@@ -241,7 +259,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="form-success" id="form-success">
         <div class="big">✅</div>
         <h3 style="color:var(--navy);margin-bottom:6px">Request received!</h3>
-        <p>We'll call you shortly to confirm your appointment.<br>Need us right now? <a href="tel:+19413479390" style="color:var(--red);font-weight:700">Call (941) 347-9390</a></p>
+        <p>We'll call you shortly to confirm your appointment.<br>Need us right now? <a class="js-call" href="tel:+19413479390" style="color:var(--red);font-weight:700">Call <span class="js-phone-text">(941) 347-9390</span></a></p>
       </div>
     </div>
   </div>
@@ -252,7 +270,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <img src="/assets/logo.svg" alt="Kingdom Appliance Repair">
       <p>Your local residential &amp; business appliance repair specialists.</p>
-      <p style="margin-top:10px"><a class="tel js-call" href="tel:+19413479390">(941) 347-9390</a></p>
+      <p style="margin-top:10px"><a class="tel js-call" href="tel:+19413479390"><span class="js-phone-text">(941) 347-9390</span></a></p>
     </div>
     <div>
       <h4>Service Area</h4>
@@ -263,7 +281,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<a class="mobile-call js-call" href="tel:+19413479390">📞 Tap to Call — (941) 347-9390</a>
+<a class="mobile-call js-call" href="tel:+19413479390">📞 Tap to Call — <span class="js-phone-text">(941) 347-9390</span></a>
 
 <script>
 (function(){
@@ -328,10 +346,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.getElementById('year').textContent = new Date().getFullYear();
 
   window.dataLayer = window.dataLayer || [];
+  var CFG = window.KAR_CONFIG;
 
-  // Call click tracking
+  // Populate every call CTA from config so the tracking number swap is one edit
+  document.querySelectorAll('.js-call').forEach(function(a){
+    a.setAttribute('href', 'tel:' + CFG.PHONE_TEL);
+    a.querySelectorAll('.js-phone-text').forEach(function(el){ el.textContent = CFG.PHONE_DISPLAY; });
+  });
+
+  // Call click tracking → Google Ads conversion + dataLayer
   document.querySelectorAll('.js-call').forEach(function(a){
     a.addEventListener('click', function(){
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {send_to: CFG.ADS_ID + '/' + CFG.LABEL_CALL});
+      }
       window.dataLayer.push({event:'call_click', appliance: ap || 'none', brand: br || 'none'});
     });
   });
@@ -363,6 +391,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }).then(function(r){ return r.json(); }).then(function(){
       form.style.display = 'none';
       document.getElementById('form-success').style.display = 'block';
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {send_to: CFG.ADS_ID + '/' + CFG.LABEL_FORM});
+      }
       window.dataLayer.push({event:'lead_form_submit', appliance: ap || 'none', brand: br || 'none'});
     }).catch(function(){
       btn.disabled = false; btn.textContent = 'Request My Repair';
