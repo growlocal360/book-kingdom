@@ -95,7 +95,9 @@ h2{font-family:'Poppins',sans-serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weig
 .appliance-card{background:#fff;border:1px solid #ece5d8;border-radius:14px;padding:22px 14px;text-align:center;font-weight:600;color:var(--navy);transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease}
 .appliance-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(20,28,74,.12);border-color:var(--gold)}
 .appliance-card.active{border:2px solid var(--gold);background:#fffaf0}
-.appliance-card .icon{font-size:2rem;margin-bottom:8px}
+.appliance-card .icon{display:flex;justify-content:center;margin-bottom:10px;color:var(--navy)}
+.appliance-card .icon svg{width:38px;height:38px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.appliance-card:hover .icon,.appliance-card.active .icon{color:var(--gold-dark)}
 
 /* Steps */
 .steps{background:var(--navy);color:#fff}
@@ -208,12 +210,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2>What Can We Fix For You?</h2>
     <p class="section-sub">Residential &amp; business appliance repair — all major makes and models.</p>
     <div class="appliance-grid">
-      <a class="appliance-card" data-appliance="refrigerator" href="?appliance=refrigerator"><div class="icon">🧊</div>Refrigerator</a>
-      <a class="appliance-card" data-appliance="washer" href="?appliance=washer"><div class="icon">🌀</div>Washer</a>
-      <a class="appliance-card" data-appliance="dryer" href="?appliance=dryer"><div class="icon">👕</div>Dryer</a>
-      <a class="appliance-card" data-appliance="oven" href="?appliance=oven"><div class="icon">🔥</div>Oven &amp; Stove</a>
-      <a class="appliance-card" data-appliance="dishwasher" href="?appliance=dishwasher"><div class="icon">🍽️</div>Dishwasher</a>
-      <a class="appliance-card" data-appliance="freezer" href="?appliance=freezer"><div class="icon">❄️</div>Ice Maker &amp; Freezer</a>
+      <a class="appliance-card" data-appliance="refrigerator" href="?appliance=refrigerator"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2"></rect><line x1="6" y1="9.5" x2="18" y2="9.5"></line><line x1="9" y1="5" x2="9" y2="7.5"></line><line x1="9" y1="12" x2="9" y2="15"></line></svg></div>Refrigerator</a>
+      <a class="appliance-card" data-appliance="washer" href="?appliance=washer"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"></rect><line x1="4" y1="7" x2="20" y2="7"></line><circle cx="12" cy="14" r="4.2"></circle><circle cx="12" cy="14" r="1.4"></circle><circle cx="6.75" cy="5" r="0.5"></circle><circle cx="9.25" cy="5" r="0.5"></circle></svg></div>Washer</a>
+      <a class="appliance-card" data-appliance="dryer" href="?appliance=dryer"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"></rect><line x1="4" y1="7" x2="20" y2="7"></line><circle cx="12" cy="14" r="4.2"></circle><path d="M10 14 q1 -1.5 2 0 t2 0"></path><circle cx="16.5" cy="5" r="0.5"></circle></svg></div>Dryer</a>
+      <a class="appliance-card" data-appliance="oven" href="?appliance=oven"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"></rect><line x1="4" y1="8.5" x2="20" y2="8.5"></line><circle cx="8" cy="5.75" r="1"></circle><circle cx="16" cy="5.75" r="1"></circle><line x1="7" y1="10.5" x2="17" y2="10.5"></line><rect x="7" y="12" width="10" height="6.5" rx="1"></rect></svg></div>Oven &amp; Stove</a>
+      <a class="appliance-card" data-appliance="dishwasher" href="?appliance=dishwasher"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"></rect><line x1="4" y1="7" x2="20" y2="7"></line><line x1="7" y1="5" x2="13" y2="5"></line><line x1="9" y1="10.5" x2="9" y2="18"></line><line x1="12" y1="10.5" x2="12" y2="18"></line><line x1="15" y1="10.5" x2="15" y2="18"></line></svg></div>Dishwasher</a>
+      <a class="appliance-card" data-appliance="freezer" href="?appliance=freezer"><div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"></rect><line x1="12" y1="6" x2="12" y2="12"></line><line x1="9.4" y1="7.5" x2="14.6" y2="10.5"></line><line x1="14.6" y1="7.5" x2="9.4" y2="10.5"></line><path d="M8 16 h8 v1.5 a1 1 0 0 1 -1 1 h-6 a1 1 0 0 1 -1 -1 z"></path></svg></div>Ice Maker &amp; Freezer</a>
     </div>
   </div>
 </section>
