@@ -67,9 +67,8 @@ a{text-decoration:none;color:inherit}
 h1{font-size:clamp(2rem,4.5vw,3.1rem);font-weight:800;line-height:1.12;margin-bottom:14px}
 h1 .accent{color:var(--gold)}
 .sub{font-size:1.15rem;color:#dfe3f5;margin-bottom:22px;max-width:34rem}
-.bullets{list-style:none;margin-bottom:28px;display:grid;gap:10px}
-.bullets li{display:flex;align-items:center;gap:10px;font-weight:500;font-size:1.02rem}
-.bullets .tick{flex:none;width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem}
+.fud{margin-top:16px;color:#e8ebf8;font-size:.95rem;font-weight:600}
+.geo{margin-top:5px;color:#a9b0d4;font-size:.85rem}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .cta-primary{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy);font-weight:800;font-size:1.2rem;padding:16px 28px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.3);transition:transform .12s ease}
 .cta-primary:hover{transform:translateY(-2px)}
@@ -137,9 +136,8 @@ footer a.tel{color:var(--gold);font-weight:700}
   .hero .wrap{grid-template-columns:1fr;gap:26px}
   .hero{padding:24px 0 44px}
   .eyebrow{margin-bottom:12px;font-size:.78rem}
-  .sub{font-size:1.02rem;margin-bottom:16px}
-  .bullets{gap:7px;margin-bottom:18px}
-  .bullets li{font-size:.95rem}
+  .sub{font-size:1.02rem;margin-bottom:18px}
+  .fud{font-size:.88rem}
   .cta-primary{font-size:1.1rem;padding:14px 24px}
   .cta-secondary{padding:13px 20px}
   .step-grid{grid-template-columns:1fr}
@@ -170,14 +168,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="eyebrow">Emergency &amp; Same-Day Service</span>
-      <h1><span id="headline">Appliance Repair</span> <span class="accent">Near You</span></h1>
-      <p class="sub" id="subhead">Fast, honest appliance repair serving Punta Gorda, Port Charlotte, Burnt Store &amp; Cape Coral.</p>
-      <ul class="bullets">
-        <li><span class="tick">✓</span> Same-day &amp; emergency appointments available</li>
-        <li><span class="tick">✓</span> No payment until after the service call</li>
-        <li><span class="tick">✓</span> 4.9-star rated by local homeowners on Google</li>
-      </ul>
+      <span class="eyebrow"><span class="stars">★★★★★</span>&nbsp; 4.9 rated by local homeowners on Google</span>
+      <h1><span id="headline">Appliance Repair</span> <span class="accent">— Fixed Today</span></h1>
+      <p class="sub" id="subhead">Stop putting up with a broken appliance. A local expert technician diagnoses the problem, quotes the price up front, and repairs it on the spot — usually same-day.</p>
       <div class="cta-row">
         <a class="cta-primary js-call" href="tel:+19413479390">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>
@@ -185,6 +178,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
         <a class="cta-secondary" href="#book">Book Online ↓</a>
       </div>
+      <p class="fud">No payment until after the service call &nbsp;·&nbsp; Same-day &amp; emergency appointments</p>
+      <p class="geo">Serving Punta Gorda, Port Charlotte, Burnt Store &amp; Cape Coral</p>
     </div>
     <div class="hero-media">
       <img src="/assets/technician-van.jpg" alt="Kingdom Appliance Repair technician and service van" fetchpriority="high">
@@ -326,17 +321,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var ap = clean(params.get('appliance'));
   var br = clean(params.get('brand'));
 
+  var PAIN = {
+    refrigerator: 'Stop throwing out spoiled groceries.',
+    washer:       'Stop hauling laundry to the laundromat.',
+    dryer:        'Stop re-running loads and hanging clothes to dry.',
+    oven:         'Stop scrambling for dinner plans.',
+    dishwasher:   'Stop washing every dish by hand.',
+    freezer:      'Stop losing everything in your freezer.'
+  };
+  var NOUN = {
+    refrigerator: 'refrigerator', washer: 'washer', dryer: 'dryer',
+    oven: 'oven or stove', dishwasher: 'dishwasher', freezer: 'ice maker or freezer'
+  };
+
   var service = APPLIANCES[ap] || 'Appliance Repair';
   var brandName = BRANDS[br] || null;
   var headline = (brandName ? brandName + ' ' : '') + service;
 
   document.getElementById('headline').textContent = headline;
-  document.title = headline + ' Near You | Kingdom Appliance Repair';
-  if (brandName) {
-    document.getElementById('subhead').textContent =
-      'Fast, honest ' + brandName + ' ' + service.replace(' Repair','').toLowerCase() +
-      ' repair serving Punta Gorda, Port Charlotte, Burnt Store & Cape Coral.';
-  }
+  document.title = headline + ' — Fixed Today | Kingdom Appliance Repair';
+
+  var canonical = SELECT_MAP[ap] || null;
+  var pain = (canonical && PAIN[canonical]) || 'Stop putting up with a broken appliance.';
+  var thing = canonical
+    ? 'your ' + (brandName ? brandName + ' ' : '') + NOUN[canonical]
+    : 'the problem';
+  document.getElementById('subhead').textContent =
+    pain + ' A local expert technician diagnoses ' + thing +
+    ', quotes the price up front, and repairs it on the spot — usually same-day.';
 
   // Highlight matching brand + appliance card
   if (brandName) {
