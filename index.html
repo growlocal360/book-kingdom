@@ -131,11 +131,17 @@ footer a.tel{color:var(--gold);font-weight:700}
 .fine{text-align:center;color:#8b91b5;margin-top:26px;font-size:.8rem;grid-column:1/-1}
 
 /* Mobile sticky call bar */
-.mobile-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:var(--red);color:#fff;text-align:center;padding:14px;font-weight:800;font-size:1.15rem;box-shadow:0 -4px 16px rgba(0,0,0,.25)}
+.mobile-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:var(--gold);color:var(--navy);text-align:center;padding:14px;font-weight:800;font-size:1.15rem;box-shadow:0 -4px 16px rgba(0,0,0,.25)}
 
 @media(max-width:840px){
-  .hero .wrap{grid-template-columns:1fr}
-  .hero{padding:40px 0 56px}
+  .hero .wrap{grid-template-columns:1fr;gap:26px}
+  .hero{padding:24px 0 44px}
+  .eyebrow{margin-bottom:12px;font-size:.78rem}
+  .sub{font-size:1.02rem;margin-bottom:16px}
+  .bullets{gap:7px;margin-bottom:18px}
+  .bullets li{font-size:.95rem}
+  .cta-primary{font-size:1.1rem;padding:14px 24px}
+  .cta-secondary{padding:13px 20px}
   .step-grid{grid-template-columns:1fr}
   footer .wrap{grid-template-columns:1fr}
   .mobile-call{display:block}
