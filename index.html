@@ -12,8 +12,8 @@
 <!-- Site config: swap PHONE values for the GoHighLevel tracking number when ready -->
 <script>
 window.KAR_CONFIG = {
-  PHONE_DISPLAY: '(941) 347-9390',   // TODO: replace with GoHighLevel tracking number
-  PHONE_TEL: '+19413479390',         // TODO: replace with GoHighLevel tracking number
+  PHONE_DISPLAY: '(941) 206-5767',   // GoHighLevel campaign tracking number
+  PHONE_TEL: '+19412065767',
   ADS_ID: 'AW-350505923',
   LABEL_CALL: 'x6hKCMeag_gcEMOXkacB',
   LABEL_FORM: 'Y1dTCMSag_gcEMOXkacB'
@@ -129,8 +129,11 @@ footer h4{color:#fff;font-size:1rem;margin-bottom:8px}
 footer a.tel{color:var(--gold);font-weight:700}
 .fine{text-align:center;color:#8b91b5;margin-top:26px;font-size:.8rem;grid-column:1/-1}
 
-/* Mobile sticky call bar */
-.mobile-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:var(--gold);color:var(--navy);text-align:center;padding:14px;font-weight:800;font-size:1.15rem;box-shadow:0 -4px 16px rgba(0,0,0,.25)}
+/* Mobile sticky action bar */
+.mobile-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:var(--navy);padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:10px;box-shadow:0 -4px 16px rgba(0,0,0,.3)}
+.mobile-bar a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 10px;border-radius:12px;font-weight:800;font-size:1.05rem}
+.mobile-book{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.mobile-call{background:var(--gold);color:var(--navy)}
 
 @media(max-width:840px){
   .hero .wrap{grid-template-columns:1fr;gap:26px}
@@ -142,8 +145,9 @@ footer a.tel{color:var(--gold);font-weight:700}
   .cta-secondary{padding:13px 20px}
   .step-grid{grid-template-columns:1fr}
   footer .wrap{grid-template-columns:1fr}
-  .mobile-call{display:block}
-  body{padding-bottom:58px}
+  .mobile-bar{display:flex}
+  .cta-secondary{display:none}
+  body{padding-bottom:74px}
   .topbar img{height:42px}
   .call-btn span.long{display:none}
 }
@@ -158,9 +162,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="topbar">
   <div class="wrap">
     <a href="/"><img src="/assets/logo.svg" alt="Kingdom Appliance Repair"></a>
-    <a class="call-btn js-call" href="tel:+19413479390">
+    <a class="call-btn js-call" href="tel:+19412065767">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>
-      <span class="long">Call:&nbsp;</span><span class="js-phone-text">(941) 347-9390</span>
+      <span class="long">Call:&nbsp;</span><span class="js-phone-text">(941) 206-5767</span>
     </a>
   </div>
 </div>
@@ -172,9 +176,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1><span id="headline">Appliance Repair</span> <span class="accent">— Fixed Today</span></h1>
       <p class="sub" id="subhead">Stop putting up with a broken appliance. A local expert technician diagnoses the problem, quotes the price up front, and repairs it on the spot — usually same-day.</p>
       <div class="cta-row">
-        <a class="cta-primary js-call" href="tel:+19413479390">
+        <a class="cta-primary js-call" href="tel:+19412065767">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>
-          Call <span class="js-phone-text">(941) 347-9390</span>
+          Call <span class="js-phone-text">(941) 206-5767</span>
         </a>
         <a class="cta-secondary" href="#book">Book Online ↓</a>
       </div>
@@ -248,10 +252,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <option value="refrigerator">Refrigerator</option>
           <option value="washer">Washer</option>
           <option value="dryer">Dryer</option>
-          <option value="oven">Oven / Stove</option>
           <option value="dishwasher">Dishwasher</option>
-          <option value="freezer">Ice Maker / Freezer</option>
-          <option value="other">Something else</option>
+          <option value="oven">Oven / Stove</option>
+          <option value="freezer">Freezer</option>
+          <option value="icemaker">Ice Maker</option>
+          <option value="garbage-disposal">Garbage Disposal</option>
+          <option value="wine-cooler">Wine Cooler</option>
+          <option value="other">Other</option>
         </select>
         <label for="f-issue">What's it doing? (optional)</label>
         <textarea id="f-issue" name="issue" rows="3" placeholder="e.g. Not cooling, leaking, won't start…"></textarea>
@@ -262,7 +269,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="form-success" id="form-success">
         <div class="big">✅</div>
         <h3 style="color:var(--navy);margin-bottom:6px">Request received!</h3>
-        <p>We'll call you shortly to confirm your appointment.<br>Need us right now? <a class="js-call" href="tel:+19413479390" style="color:var(--red);font-weight:700">Call <span class="js-phone-text">(941) 347-9390</span></a></p>
+        <p>We'll call you shortly to confirm your appointment.<br>Need us right now? <a class="js-call" href="tel:+19412065767" style="color:var(--red);font-weight:700">Call <span class="js-phone-text">(941) 206-5767</span></a></p>
       </div>
     </div>
   </div>
@@ -273,7 +280,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <img src="/assets/logo.svg" alt="Kingdom Appliance Repair">
       <p>Your local residential &amp; business appliance repair specialists.</p>
-      <p style="margin-top:10px"><a class="tel js-call" href="tel:+19413479390"><span class="js-phone-text">(941) 347-9390</span></a></p>
+      <p style="margin-top:10px"><a class="tel js-call" href="tel:+19412065767"><span class="js-phone-text">(941) 206-5767</span></a></p>
     </div>
     <div>
       <h4>Service Area</h4>
@@ -284,7 +291,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<a class="mobile-call js-call" href="tel:+19413479390"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:6px" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>Tap to Call — <span class="js-phone-text">(941) 347-9390</span></a>
+<div class="mobile-bar">
+  <a class="mobile-book" href="#book"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><line x1="3" y1="10" x2="21" y2="10"></line><line x1="8" y1="3" x2="8" y2="7"></line><line x1="16" y1="3" x2="16" y2="7"></line></svg>Book Online</a>
+  <a class="mobile-call js-call" href="tel:+19412065767"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>Call Now</a>
+</div>
 
 <script>
 (function(){
@@ -312,7 +322,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     dryer:'dryer',
     oven:'oven', stove:'oven', range:'oven',
     dishwasher:'dishwasher',
-    icemaker:'freezer', freezer:'freezer'
+    icemaker:'icemaker', freezer:'freezer'
   };
 
   function clean(v){ return (v||'').toLowerCase().replace(/[^a-z]/g,''); }
@@ -327,11 +337,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     dryer:        'Stop re-running loads and hanging clothes to dry.',
     oven:         'Stop scrambling for dinner plans.',
     dishwasher:   'Stop washing every dish by hand.',
-    freezer:      'Stop losing everything in your freezer.'
+    freezer:      'Stop losing everything in your freezer.',
+    icemaker:     'Stop buying bags of ice.'
   };
   var NOUN = {
     refrigerator: 'refrigerator', washer: 'washer', dryer: 'dryer',
-    oven: 'oven or stove', dishwasher: 'dishwasher', freezer: 'ice maker or freezer'
+    oven: 'oven or stove', dishwasher: 'dishwasher', freezer: 'freezer', icemaker: 'ice maker'
   };
 
   var service = APPLIANCES[ap] || 'Appliance Repair';
@@ -357,7 +368,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
   var sel = SELECT_MAP[ap];
   if (sel) {
-    var card = document.querySelector('.appliance-card[data-appliance="'+sel+'"]');
+    var cardKey = sel === 'icemaker' ? 'freezer' : sel;
+    var card = document.querySelector('.appliance-card[data-appliance="'+cardKey+'"]');
     if (card) card.classList.add('active');
     var dd = document.getElementById('f-appliance');
     if (dd) dd.value = sel === 'oven' ? 'oven' : sel;
@@ -417,7 +429,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       window.dataLayer.push({event:'lead_form_submit', appliance: ap || 'none', brand: br || 'none'});
     }).catch(function(){
       btn.disabled = false; btn.textContent = 'Request My Repair';
-      alert('Something went wrong — please call us at (941) 347-9390.');
+      alert('Something went wrong — please call us at (941) 206-5767.');
     });
   });
 })();
